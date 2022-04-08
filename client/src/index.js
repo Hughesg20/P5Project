@@ -1,17 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDom from 'react-dom/client';
 import './index.css';
 import App from './Components/App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom'
 
-ReactDOM.render(
+const root = ReactDom.createRoot(document.getElementById("root"));
+root.render(
   <Router>
     <App />
   </Router>
-    
-  ,
-  document.getElementById('root')
 );
+
 
 reportWebVitals();
