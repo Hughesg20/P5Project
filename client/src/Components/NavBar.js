@@ -14,12 +14,17 @@ const navbar = {
 
 function NavBar() {
 
+  const handleLogout = () => {
+    fetch('/logout',{method: "DELETE"})
+  }
+
   return (
     <span style={navbar}>
       <Link to="/home"  style={linkStyle}>Home</Link>
-      <Link to="/" style={linkStyle}>login</Link>
+      <Link to="/login" style={linkStyle}>login</Link>
       <Link to="/signup" style={linkStyle}>signup</Link>
       <Link to="/profile" style={linkStyle}>profile</Link>
+      <button onClick={()=>{handleLogout()}}>Logout</button>
     </span>
   )
 }

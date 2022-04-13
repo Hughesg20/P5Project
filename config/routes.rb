@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get '/me', to: 'clients#show'
-
+  get '/me', to: 'user#show'
+  post '/addzip', to: 'user_favs#create'
   get '/test/:id', to: 'weather_apis#test'
   
   # Defines the root path route ("/")

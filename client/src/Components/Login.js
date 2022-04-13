@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-
+import {useNavigate as navigate} from 'react-router-dom'
 function Login() {
 const [username, setUsername] = useState("")
 const [password, setPassword] = useState("")
@@ -11,23 +11,23 @@ const handlePassword = (e) => setPassword(e.target.value)
 const handleLogin = (e) => {
   e.preventDefault()
   console.log("loginsubmit")
-  // fetch(`/login`, {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify({
-  //     username: username,
-  //     password: password,
-  //   }),
-  // }).then((r) => {
-  //   if (r.ok) {
-  //     r.json().then((data) => {
-  //       setUser(data);
-  //       navigate("/");
-  //     });
-  //   }
-  // });
+  fetch(`/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: username,
+      password: password,
+    }),
+  }).then((r) => {
+    if (r.ok) {
+      r.json().then((data) => {
+        setUsername(data);
+        navigate("/");
+      });
+    }
+  });
 }
 
 
