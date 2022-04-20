@@ -43,6 +43,7 @@ function NavBar() {
       {render?<>
       <Link to="/home"  style={linkStyle}>Home</Link>
       <Link to="/profile" style={linkStyle}>profile</Link>
+      <Link to="/favorites" style={linkStyle}>favorites</Link>
       </>: null}
       <button onClick={()=>{handleLogout()}}>Logout</button>
     </span>

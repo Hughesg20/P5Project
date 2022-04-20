@@ -1,16 +1,14 @@
 class FavoritesController < ApplicationController
+  skip_before_action :authorize, only: [:show]
   before_action :set_favorite, only: %i[ show update destroy ]
 
   # GET /favorites
-  def index
-    @favorites = Favorite.all
-
-    render json: @favorites
-  end
+  
 
   # GET /favorites/1
   def show
-    render json: @favorite
+    favorite = Favorite.find_by(user_id: session[:user_id])
+    render json: favorite
   end
 
   # POST /favorites

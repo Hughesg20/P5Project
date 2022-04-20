@@ -9,6 +9,7 @@ import Login from './Login'
 import SignUp from './SignUp'
 import NavBar from './NavBar'
 import Profile from './Profile'
+import Favorites from './Favorites'
 
 const linkStyle = {
   textAlign: 'center',
@@ -44,6 +45,7 @@ useEffect(()=>{
       {user? <>
       <Route exact path="/home" element={<Home/>}/>
       <Route exact path="/profile" element={<Profile/>}/>
+      <Route exact path="/favorites" element={<Favorites/>}/>
       </>
       : null}
       

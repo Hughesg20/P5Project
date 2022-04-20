@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :movies
-  resources :watch_laters
-  resources :favorites
+  resources :movies, only: [:show,:index]
+  resources :watch_laters, only: [:show,:index,:destroy,:create]
+  resources :favorites, only: [:show,:destroy,:create]
   
   resources :users, only: [:index, :show, :create, :update, :destroy]
 
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   delete '/logout', to: 'sessions#destroy'
   get '/me', to: 'users#show'
-  
+  get '/favorites', to: 'favorites#show'
   # Defines the root path route ("/")
   # root "articles#index"
 end
