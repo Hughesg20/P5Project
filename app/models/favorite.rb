@@ -1,4 +1,4 @@
 class Favorite < ApplicationRecord
     belongs_to :user
-    belongs_to :weather_api
+    belongs_to :movie
 end

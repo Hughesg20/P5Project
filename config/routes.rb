@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
-  resources :weather_apis
+  resources :movies
+  resources :watch_laters
   resources :favorites
-  resources :user_favs
   
   resources :users, only: [:index, :show, :create, :update, :destroy]
 
   post '/login', to: 'sessions#create'
+  post '/signup', to: 'users#create'
   delete '/logout', to: 'sessions#destroy'
-  get '/me', to: 'user#show'
-  post '/addzip', to: 'user_favs#create'
-  get '/test/:id', to: 'weather_apis#test'
+  get '/me', to: 'users#show'
   
   # Defines the root path route ("/")
   # root "articles#index"

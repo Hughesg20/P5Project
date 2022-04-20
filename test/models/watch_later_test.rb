@@ -1,6 +1,6 @@
 require "test_helper"
 
-class WeatherApiTest < ActiveSupport::TestCase
+class WatchLaterTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

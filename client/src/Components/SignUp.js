@@ -20,7 +20,7 @@ function SignUp() {
     const handleSignup = (e) => {
       e.preventDefault()
       console.log("signupsubmit")
-      fetch(`/Signup`, {
+      fetch(`/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +45,7 @@ function SignUp() {
     
       return (
         <>
-          <h1>hello welcome to maps.com please Signup or register below</h1>
+          <h1>Signup</h1>
           <br/>
           <div className="form">
             <form className="Signup_form" onSubmit={(e)=>handleSignup(e)}>

@@ -10,22 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_13_125532) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_20_195548) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "weather_api_id"
+    t.integer "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_favorites_on_movie_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
-    t.index ["weather_api_id"], name: "index_favorites_on_weather_api_id"
   end
 
-  create_table "user_favs", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "zipcode"
+  create_table "movies", force: :cascade do |t|
+    t.integer "mid"
+    t.string "name"
+    t.string "image"
+    t.float "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_favs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,12 +40,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_13_125532) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "weather_apis", force: :cascade do |t|
+  create_table "watch_laters", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_watch_laters_on_movie_id"
+    t.index ["user_id"], name: "index_watch_laters_on_user_id"
   end
 
-  add_foreign_key "favorites", "users"
-  add_foreign_key "favorites", "weather_apis"
-  add_foreign_key "user_favs", "users"
 end
