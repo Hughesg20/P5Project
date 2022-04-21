@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/me', to: 'users#show'
   get '/favorites', to: 'favorites#show'
+  post '/fav', to: 'favorites#create'
   # Defines the root path route ("/")
   # root "articles#index"
 end

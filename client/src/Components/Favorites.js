@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react'
-
+import MovieCard from './MovieCard'
 function Favorites() {
 const [movies,setMovies] = useState([])
     useEffect(()=>{
@@ -11,6 +11,7 @@ const [movies,setMovies] = useState([])
 
   return (
     <div>
+      <h1>yo</h1>
       {movies.map(movie=>{<MovieCard movie={movie}/>})}
     </div>
     

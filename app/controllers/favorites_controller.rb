@@ -1,14 +1,25 @@
 class FavoritesController < ApplicationController
-  skip_before_action :authorize, only: [:show]
-  before_action :set_favorite, only: %i[ show update destroy ]
+  skip_before_action :authorize, only: [:show,:index]
+  
 
   # GET /favorites
-  
+  def index
+    favorites = Favorite.where(user_id:session[:user_id])
+    render json: favorites
+  end
+
+  #GET /favoritemovies
+  def indexmovies
+    favoritemovies = Favorite.where(user_id: session[:user_id]).map{|favorite|  user.push(favorite.movie)}
+
+  # GET /favorites/1
+  def showindexmovies
+    favoritemovies = Favorite.where(user_id: session[:user_id][id: params[:id]].movie)
 
   # GET /favorites/1
   def show
-    favorite = Favorite.find_by(user_id: session[:user_id])
-    render json: favorite
+    favorites = Favorite.where(user_id:session[:user_id][id: params[:id]])
+    render json: favorites
   end
 
   # POST /favorites
