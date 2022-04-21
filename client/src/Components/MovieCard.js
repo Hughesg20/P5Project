@@ -1,6 +1,7 @@
 import React from 'react'
-import{ useDispatch, useSelector } from "react-redux"
-import{ toggleUser } from "./redux/userSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { toggleUser } from "./redux/userSlice"
+import './styling/MovieCard.css'
 
 function MovieCard(movie) {
     const dispatch = useDispatch()
@@ -13,8 +14,7 @@ function MovieCard(movie) {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              user_id: user,
-              mid: movie.mid,
+              mid: movie.movie.mid
             })
         })
     }
@@ -23,8 +23,9 @@ function MovieCard(movie) {
 
   return (
     <div>
-        <p>{movie.name}</p>
-        <button> onClick={()=>{addtofav()}}fav</button>
+        <h2>{movie.movie.name}</h2>
+        <img className="movie-image"src={movie.movie.image}></img>
+        <button onClick={()=>{addtofav()}}>fav</button>
     </div>
   )
 }

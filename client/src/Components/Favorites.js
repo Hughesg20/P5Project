@@ -6,13 +6,14 @@ const [movies,setMovies] = useState([])
         fetch('/favoritemovies')
         .then(r=>r.json())
         .then(r=>setMovies(r))
+        .then(console.log(movies))
     },[])
 
 
   return (
     <div>
       <h1>yo</h1>
-      {movies.map(movie=>{<MovieCard movie={movie}/>})}
+      {movies.map(movie=>{return <MovieCard movie={movie} key={movie.id}/>})}
     </div>
     
   )

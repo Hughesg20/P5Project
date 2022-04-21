@@ -38,6 +38,7 @@ function NavBar() {
 
   return (
     <span style={navbar}>
+      {render? `welcome:${user.username}`:null}
       <Link to="/" style={linkStyle}>login</Link>
       <Link to="/signup" style={linkStyle}>signup</Link>
       {render?<>

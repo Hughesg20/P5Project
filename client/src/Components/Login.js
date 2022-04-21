@@ -25,7 +25,7 @@ function Login() {
       if (r.ok) {
         r.json()
           .then((data) => {
-            setUsername(data);
+            setUsername(data.username);
             console.log(data)
           })
       }

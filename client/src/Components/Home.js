@@ -1,18 +1,20 @@
-import React from 'react'
-
+import React,{useState,useEffect} from 'react'
+import MovieCard from './MovieCard'
 function Home() {
-
-  function yo (){
-    fetch('/favoritemovies')
+const[movies,setMovies] = useState()
+  useEffect (()=>{
+    fetch('/movies')
         .then(r=>r.json())
-        .then(r=>console.log(r[1]))
-  }
-
+        .then(r=>setMovies(r))
+        .then(console.log(movies))
+  },[])
+  
 
   return (
     <>
     <div>Home</div>
-    <button onClick={()=>{yo()}}>yo</button>
+    {movies?movies.map(movie=>{return <MovieCard movie={movie} key={movie.id}/>}):null}
+    
     </>
   )
 }

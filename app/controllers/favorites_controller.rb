@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  skip_before_action :authorize, only: [:show,:index]
+  skip_before_action :authorize, only: [:show,:index,:create]
   
 
   # GET /favorites
@@ -27,23 +27,13 @@ class FavoritesController < ApplicationController
 
   # POST /favorites
   def create
-    @favorite = Favorite.new(favorite_params)
+    movie = Movie.find_by(favorite_params).id
+    favorite = Favorite.create!(user_id: session[:user_id],movie_id: movie)
 
-    if @favorite.save
-      render json: @favorite, status: :created, location: @favorite
-    else
-      render json: @favorite.errors, status: :unprocessable_entity
-    end
   end
 
   # PATCH/PUT /favorites/1
-  def update
-    if @favorite.update(favorite_params)
-      render json: @favorite
-    else
-      render json: @favorite.errors, status: :unprocessable_entity
-    end
-  end
+ 
 
   # DELETE /favorites/1
   def destroy
@@ -58,6 +48,6 @@ class FavoritesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def favorite_params
-      params.fetch(:favorite, {})
+      params.permit(:mid)
     end
 end

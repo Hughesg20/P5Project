@@ -28,8 +28,8 @@ function SignUp() {
         body: JSON.stringify({
             username: username,
             firstname: firstname,
-            eamil:email,
             lastname: lastname,
+            email:email,
             password: password,
         }),
       }).then((r) => {
@@ -71,6 +71,14 @@ function SignUp() {
                   value={lastname}
                   placeholder="Lastname"
                   onChange={(e)=> handleLastname(e)}
+                />
+                <br/>
+                <label>Eamil</label>
+                <input
+                  type="text"
+                  value={email}
+                  placeholder="email"
+                  onChange={(e)=> handleEmail(e)}
                 />
                 <br/>
                 <label>Password</label>
