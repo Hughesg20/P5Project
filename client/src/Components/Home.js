@@ -3,7 +3,7 @@ import React from 'react'
 function Home() {
 
   function yo (){
-    fetch('/favorites')
+    fetch('/favoritemovies')
         .then(r=>r.json())
         .then(r=>console.log(r[1]))
   }

@@ -10,12 +10,15 @@ class FavoritesController < ApplicationController
 
   #GET /favoritemovies
   def indexmovies
-    favoritemovies = Favorite.where(user_id: session[:user_id]).map{|favorite|  user.push(favorite.movie)}
-
+    favoritemovies = []
+    Favorite.where(user_id: session[:user_id]).map{|favorite|  favoritemovies.push(favorite.movie)}
+    render json: favoritemovies
+  end
   # GET /favorites/1
   def showindexmovies
-    favoritemovies = Favorite.where(user_id: session[:user_id][id: params[:id]].movie)
-
+    favoritemovie = Favorite.where(user_id: session[:user_id][id: params[:id]].movie)
+    render json: favoritemovie
+  end
   # GET /favorites/1
   def show
     favorites = Favorite.where(user_id:session[:user_id][id: params[:id]])

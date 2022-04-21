@@ -3,7 +3,7 @@ import MovieCard from './MovieCard'
 function Favorites() {
 const [movies,setMovies] = useState([])
     useEffect(()=>{
-        fetch('/favorites')
+        fetch('/favoritemovies')
         .then(r=>r.json())
         .then(r=>setMovies(r))
     },[])

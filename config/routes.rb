@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index, :show, :create, :update, :destroy]
 
+
+  get '/favoritemovies',to: 'favorites#indexmovies'
+  get '/showfavoritemovies',to: 'favorites#showindexmovies'
   post '/login', to: 'sessions#create'
   post '/signup', to: 'users#create'
   delete '/logout', to: 'sessions#destroy'
